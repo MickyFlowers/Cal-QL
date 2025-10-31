@@ -81,7 +81,7 @@ def main(argv):
     else:
         dataset = get_d4rl_dataset_with_mc_calculation(FLAGS.env, FLAGS.reward_scale, FLAGS.reward_bias, FLAGS.clip_action, gamma=FLAGS.cql.discount)
         use_goal = False
-
+    print("Successfully getting dataset")
     assert dataset["next_observations"].shape == dataset["observations"].shape
 
     set_random_seed(FLAGS.seed)
@@ -98,10 +98,9 @@ def main(argv):
     )
 
     qf = FullyConnectedQFunction(observation_dim, action_dim, FLAGS.qf_arch, FLAGS.orthogonal_init)
-
+    print("Successfully init sampler, replay buffer, policy and Q function")
     if FLAGS.cql.target_entropy >= 0.0:
         FLAGS.cql.target_entropy = -np.prod(eval_sampler.env.action_space.shape).item()
-
     sac = ConservativeSAC(FLAGS.cql, policy, qf)
     sampler_policy = SamplerPolicy(sac.policy, sac.train_params['policy'])
 

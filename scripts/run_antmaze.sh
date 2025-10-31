@@ -1,3 +1,6 @@
+# export http_proxy=http://192.168.32.11:18000
+# export https_proxy=http://192.168.32.11:18000
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/.mujoco/mujoco210/bin
 export D4RL_SUPPRESS_IMPORT_ERROR=1
 # export CUDA_VISIBLE_DEVICES=0
 # export WANDB_DISABLED=True
@@ -5,11 +8,11 @@ export D4RL_SUPPRESS_IMPORT_ERROR=1
 # antmaze-medium-diverse-v2, antmaze-medium-play-v2, antmaze-large-diverse-v2, antmaze-large-play-v2
 env=antmaze-medium-diverse-v2
 
-XLA_PYTHON_CLIENT_PREALLOCATE=false python -m JaxCQL.conservative_sac_main \
+CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_PREALLOCATE=false python -m JaxCQL.conservative_sac_main \
     --env $env \
     --logging.online \
     --seed 0 \
-    --logging.project=Cal-QL-exapmle \
+    --logging.project=test \
     --cql_min_q_weight=5.0 \
     --cql.cql_target_action_gap=0.8 \
     --cql.cql_lagrange=True \
