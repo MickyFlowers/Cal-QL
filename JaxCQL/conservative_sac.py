@@ -10,7 +10,7 @@ from flax.training.train_state import TrainState
 import optax
 from jax.flatten_util import ravel_pytree
 
-from .jax_utils import (
+from ..utils.jax_utils import (
     next_rng, value_and_multi_grad, mse_loss, JaxRNG, wrap_function_with_rng,
     collect_jax_metrics
 )

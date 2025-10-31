@@ -8,10 +8,10 @@ import absl.flags
 
 from .conservative_sac import ConservativeSAC
 from .replay_buffer import subsample_batch, concatenate_batches, get_d4rl_dataset_with_mc_calculation, get_hand_dataset_with_mc_calculation
-from .jax_utils import batch_to_jax
+from ..utils.jax_utils import batch_to_jax
 from .model import TanhGaussianPolicy, FullyConnectedQFunction, SamplerPolicy
 from .sampler import TrajSampler
-from .utils import (
+from ..utils.utils import (
     Timer, define_flags_with_default, set_random_seed,
     get_user_flags, prefix_metrics, WandBLogger
 )

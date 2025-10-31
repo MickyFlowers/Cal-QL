@@ -1,13 +1,13 @@
 from functools import partial
 
-import numpy as np
+import distrax
+import flax
 import jax
 import jax.numpy as jnp
-import flax
+import numpy as np
 from flax import linen as nn
-import distrax
 
-from .jax_utils import extend_and_repeat, next_rng, JaxRNG
+from ..utils.jax_utils import JaxRNG, extend_and_repeat, next_rng
 
 
 def update_target_network(main_params, target_params, tau):

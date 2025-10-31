@@ -81,7 +81,7 @@ class WandBLogger(object):
             time.sleep(np.random.uniform(0, self.config.random_delay))
 
         try:
-            from .wandb_config import get_wandb_config
+            from ..JaxCQL.wandb_config import get_wandb_config
             wandb_config = get_wandb_config()
             os.environ['WANDB_API_KEY'] = wandb_config['WANDB_API_KEY']
             os.environ['WANDB_USER_EMAIL']  = wandb_config['WANDB_EMAIL']
@@ -93,13 +93,13 @@ class WandBLogger(object):
             import pdb; pdb.set_trace()
             os.environ["WANDB_MODE"] = "run"
             self.config.online = False
-
+        date = time.strftime("%Y%m%d", time.localtime())
         self.run = wandb.init(
             reinit=True,
             config=self._variant,
             project=self.config.project,
             dir=self.config.output_dir,
-            id=self.config.experiment_id + uuid.uuid4().hex,
+            id=self.config.experiment_id + date,
             anonymous=self.config.anonymous,
             notes=self.config.notes,
             settings=wandb.Settings(
