@@ -35,6 +35,47 @@
                 "--enable_calql=True"
             ],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "debug_bc",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "bc.train_bc",
+            "console": "integratedTerminal",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+            },
+            "args": [
+                "logging.online=true",
+                "logging.prefix=bc",
+                "seed=0",
+                "logging.project=screwdriver-il",
+                "policy_obs_head_arch=256-256",
+                "policy_hidden_dim=256",
+                "policy_out_head_arch=256-256",
+                "batch_size=64",
+                "trainer.learning_rate=3e-4",
+                "data_root=/mnt/pfs/dataset/screwdriver-il-converted",
+                "n_train_epochs=1000",
+                "save_model=True",
+                "save_ckpt_dir=/root/workspace/Cal-QL/checkpoints/",
+                "save_model_interval=2",
+                // "load_ckpt_dir=/root/workspace/Cal-QL/checkpoints/bc--screwdriver-il/20251105-101205"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "debug_rollout",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "bc.rollout",
+            "console": "integratedTerminal",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+            },
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

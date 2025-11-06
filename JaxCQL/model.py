@@ -7,7 +7,7 @@ import jax.numpy as jnp
 import numpy as np
 from flax import linen as nn
 
-from ..utils.jax_utils import JaxRNG, extend_and_repeat, next_rng
+from utils.jax_utils import JaxRNG, extend_and_repeat, next_rng
 
 
 def update_target_network(main_params, target_params, tau):

@@ -1,0 +1,11 @@
+# Policy sub-config
+observation_dim: 6
+action_dim: 6
+image_size: 224
+obs_head_arch: '256-256'
+hidden_dim: 256
+out_head_arch: '256-256'
+orthogonal_init: true
+log_std_multiplier: 1.0
+log_std_offset: -1.0
+train: true

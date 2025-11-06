@@ -1,19 +1,16 @@
 from copy import deepcopy
 from functools import partial
 
-from ml_collections import ConfigDict
-
-import numpy as np
 import jax
 import jax.numpy as jnp
-from flax.training.train_state import TrainState
+import numpy as np
 import optax
+from flax.training.train_state import TrainState
 from jax.flatten_util import ravel_pytree
+from ml_collections import ConfigDict
 
-from ..utils.jax_utils import (
-    next_rng, value_and_multi_grad, mse_loss, JaxRNG, wrap_function_with_rng,
-    collect_jax_metrics
-)
+from utils.jax_utils import (JaxRNG, collect_jax_metrics, mse_loss, next_rng,
+                               value_and_multi_grad, wrap_function_with_rng)
 from .model import Scalar, update_target_network
 
 
@@ -46,7 +43,7 @@ class ConservativeSAC(object):
         return config
 
     def __init__(self, config, policy, qf):
-        self.config = self.get_default_config(config)
+        self.config = config
         self.policy = policy
         self.qf = qf
         self.observation_dim = policy.observation_dim

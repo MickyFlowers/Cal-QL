@@ -104,3 +104,5 @@ def collect_jax_metrics(metrics, names, prefix=None):
             '{}/{}'.format(prefix, key): value for key, value in collected.items()
         }
     return collected
+
+

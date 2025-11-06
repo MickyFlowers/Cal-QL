@@ -1,0 +1,29 @@
+defaults:
+  - policy: resnet_policy
+  - trainer: bc_trainer
+  - logging: logging_defaults
+
+seed: 42
+save_model: true
+save_model_interval: 200
+save_ckpt_dir: ./checkpoints
+load_ckpt_dir: null
+restore_steps: latest
+best_mode: 'min'
+best_metrics_key: 'bc/policy_loss'
+
+batch_size: 32
+data_root: data_root
+num_workers: 4
+n_train_epochs: 1000
+
+observation_dim: 6
+action_dim: 6
+image_size: 224
+
+policy_obs_head_arch: '256-256'
+policy_hidden_dim: 256
+policy_out_head_arch: '256-256'
+orthogonal_init: true
+policy_log_std_multiplier: 1.0
+policy_log_std_offset: -1.0

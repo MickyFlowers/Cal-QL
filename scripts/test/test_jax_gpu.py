@@ -9,6 +9,7 @@ print("set jax random rng key successfully")
 
 import requests
 from PIL import Image
+
 # import transformers
 from transformers import AutoImageProcessor, FlaxResNetModel
 
@@ -17,7 +18,7 @@ image = Image.open(requests.get(url, stream=True).raw)
 image_processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50")
 print("Successfully loading image processor")
 model = FlaxResNetModel.from_pretrained("microsoft/resnet-50")
-print("Successfully loading Resnet-50 Jax model")
+("Successfully loading Resnet-50 Jax model")
 inputs = image_processor(images=image, return_tensors="np")
 print(inputs["pixel_values"].shape)
 outputs = model(**inputs)
